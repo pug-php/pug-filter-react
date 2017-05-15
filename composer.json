@@ -1,0 +1,26 @@
+{
+    "name": "pug-php/pug-filter-react",
+    "description": "Render React JSX code as JavaScript in a script tag",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kyle Katarn",
+            "email": "kylekatarnls@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "pug-php/pug": "^2.0.2",
+        "nodejs-php-fallback/react": "^1.3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">=4.8 <6.0",
+        "codeclimate/php-test-reporter": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "Pug": ["src/", "alias/"]
+        }
+    }
+}

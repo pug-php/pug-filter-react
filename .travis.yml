@@ -1,0 +1,24 @@
+language: php
+
+php:
+  - 5.6
+  - 7.0
+  - 7.1
+  - hhvm
+
+before_script:
+  - travis_retry composer self-update
+  - travis_retry composer install --no-interaction --prefer-source --dev
+
+script:
+  - vendor/bin/phpunit --verbose --coverage-text --coverage-clover=coverage.xml
+
+after_script:
+  - vendor/bin/test-reporter --coverage-report coverage.xml
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
+addons:
+  code_climate:
+    repo_token: 2c5c4708df9d12fcba852dd790c57e53b7f87280f528cbbc0dc6413d13841d76
