@@ -1,6 +1,9 @@
 language: php
 
 php:
+  - 5.3
+  - 5.4
+  - 5.5
   - 5.6
   - 7.0
   - 7.1
@@ -21,4 +24,4 @@ after_success:
 
 addons:
   code_climate:
-    repo_token: 2c5c4708df9d12fcba852dd790c57e53b7f87280f528cbbc0dc6413d13841d76
+    repo_token: 0a31b541cee9f52242db2fc659c6e7a91987bc80d860736d87ae88962fc10eaf
