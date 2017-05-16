@@ -12,8 +12,11 @@ class Filter extends Script
     public function parse($code)
     {
         $react = new React($code);
-        $js = $react->getResult();
 
-        return preg_replace('/\n\s+\/\/#\s+sourceMappingURL=.+\.map\s*$/', '', $js);
+        return preg_replace(
+            '/\n\s+\/\/#\s+sourceMappingURL=.+\.map\s*$/',
+            '',
+            $react->getResult()
+        );
     }
 }
