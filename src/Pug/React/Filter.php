@@ -2,8 +2,8 @@
 
 namespace Pug\React;
 
-use Pug\Filter\Script;
 use NodejsPhpFallback\React;
+use Pug\Filter\Script;
 
 class Filter extends Script
 {
