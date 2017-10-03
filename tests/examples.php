@@ -21,22 +21,23 @@ class ExamplesTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider caseProvider
      */
-    public function testJadeGeneration($htmlFile, $jadeFile)
+    public function testPugGeneration($htmlFile, $pugFile)
     {
-        $jade = new Pug();
-        $renderedHtml = $jade->render($jadeFile, array(
-            'color' => 'yellow',
-        ));
+        $pug = new Pug();
+        $renderFile = method_exists($pug, 'renderFile')
+            ? array($pug, 'renderFile')
+            : array($pug, 'render');
+        $renderedHtml = call_user_func($renderFile, $pugFile);
         $htmlFileContents = file_get_contents($htmlFile);
 
         $actual = trim(preg_replace('`[\s_]+`', '', $renderedHtml));
         $expected = trim(preg_replace('`[\s_]+`', '', $htmlFileContents));
 
-        $this->assertSame($expected, $actual, $jadeFile . ' should match ' . $htmlFile . ' as html');
+        $this->assertSame($expected, $actual, $pugFile . ' should match ' . $htmlFile . ' as html');
 
         $actual = trim(preg_replace('`[\s_]+`', ' ', strip_tags($renderedHtml)));
         $expected = trim(preg_replace('`[\s_]+`', ' ', strip_tags($htmlFileContents)));
 
-        $this->assertSame($expected, $actual, $jadeFile . ' should match ' . $htmlFile . ' as text');
+        $this->assertSame($expected, $actual, $pugFile . ' should match ' . $htmlFile . ' as text');
     }
 }
